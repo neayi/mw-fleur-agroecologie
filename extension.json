@@ -1,0 +1,56 @@
+{
+	"name": "FleurAgroecologie",
+	"version": "1.0",
+	"author": [
+		"[https://www.mediawiki.org/wiki/User:BertrandGorge Bertrand Gorge]"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:FleurAgroecologie",
+	"descriptionmsg": "FleurAgroecologie-desc",
+	"manifest_version": 1,
+	"type": "parserhook",
+	"license-name": "MIT",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"MessagesDirs": {
+		"FleurAgroecologie": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.mwFleurAgroecologie": {
+			"scripts": [
+				"mw.fleur-agroecologie.js"
+			],
+			"dependencies": [
+				"jquery.ui"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"messages": [
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "FleurAgroecologie/resources"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\FleurAgroecologie\\": "includes/"
+	},
+	"HookHandlers": {
+		"FleurAgroecologieHooks": {
+			"class": "MediaWiki\\Extension\\FleurAgroecologie\\FleurAgroecologieHooks"
+		}
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "FleurAgroecologieHooks"
+	},
+	"ExtensionMessagesFiles": {
+		"FleurAgroecologieMagic": "FleurAgroecologie.i18n.magic.php"
+	},
+	"config": {
+	}
+}

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- <img  width="500" src="resources/fleur-agroecologie.svg"> -->
+
+    <div class="fleurs-agroecologie" data-autonomie="3" data-resilience="3" data-travail="3" data-viabilite="1" data-sante="3" data-securite="4" data-territoire="3" data-terroir="0" data-biodiversite="3" data-climat="3" data-fertilite="3" data-ressources="3" style="width:500px; height:500px"></div>
+</body>
+<script>
+    $( document ).ready(function() {
+        xhr = new XMLHttpRequest();
+        xhr.open("GET", "resources/fleur-agroecologie.svg", false);
+
+        let axes = [
+            'autonomie',
+            'resilience',
+            'travail',
+            'viabilite',
+            'sante',
+            'securite',
+            'territoire',
+            'terroir',
+            'biodiversite',
+            'climat',
+            'fertilite',
+            'ressources'];
+        
+        xhr.overrideMimeType("image/svg+xml");
+        xhr.onload = function(e) {
+            // You might also want to check for xhr.readyState/xhr.status here
+            
+            $(".fleurs-agroecologie").each(function() {
+
+                let theDiv = $(this);
+                theDiv.append(xhr.responseXML.documentElement);
+                theDiv.find(".score").addClass("score-off");
+
+                axes.forEach((axe) => {
+                    let value = theDiv.data(axe);
+
+                    for (let i = 1; i <= value; i++)
+                    {
+                        theDiv.find(".score-"+axe+"-"+i).removeClass("score-off");
+                    }
+                });
+            });
+        };
+
+        xhr.send("");
+    });
+
+</script>
+</html>
