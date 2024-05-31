@@ -62,6 +62,7 @@ class FleurAgroecologieHooks implements
 		$container_classes = ['fleurs-agroecologie'];
 		
 		$values = [];
+		$bIsAligned = false;
 
 		// try to find a few specific parameters to the template call:
 		foreach ($args as $k => $v) {
@@ -80,6 +81,7 @@ class FleurAgroecologieHooks implements
 
 				case 'align':
 					$container_classes[] = "float-md-" . trim($parts[1]);
+					$bIsAligned = true;		
 					break;
 
 				case 'autonomie': 
@@ -137,6 +139,9 @@ class FleurAgroecologieHooks implements
 					break;
 			}
 		}
+		
+		if (!$bIsAligned)
+			$container_classes[] = "mx-auto";
 
 		if (empty($height))
 			$height = $width;
