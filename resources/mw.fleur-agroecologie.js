@@ -82,7 +82,8 @@
 					"Je prends en compte l’ensemble de ces dimensions, et chacune de manière approfondie sur l’ensemble de ma ferme. Je mesure mes résultats : <b>la gestion des ressources sur ma ferme est maitrisée.</b>"]}];
 
 			let popoverOptions = {
-				trigger: 'hover click'
+				trigger: 'hover click',
+				html: true
 			  };
 
 			$.ajax({
