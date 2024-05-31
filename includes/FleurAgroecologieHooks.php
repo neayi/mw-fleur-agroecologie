@@ -80,7 +80,12 @@ class FleurAgroecologieHooks implements
 					break;
 
 				case 'align':
-					$container_classes[] = "float-md-" . trim($parts[1]);
+					$parts[1] = trim($parts[1]);
+					if ($parts[1] == 'center')
+						$container_classes[] = "mx-auto";
+					else
+						$container_classes[] = "float-md-" . $parts[1];
+
 					$bIsAligned = true;		
 					break;
 
