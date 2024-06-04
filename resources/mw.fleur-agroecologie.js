@@ -91,10 +91,11 @@
 				for (let axeIndex = 0; axeIndex < 12; axeIndex++)
 				{
 					let axe = self.axes[axeIndex];
-	
+					let value = theDiv.data(axe.nom) ?? 0;
+
 					if (step <= 0)
 						theDiv.find(".score-"+axe.nom+"-"+ (step + 4)).removeClass("score-off");
-					else 
+					else if (5 - step > value)
 						theDiv.find(".score-"+axe.nom+"-"+ (5 - step)).addClass("score-off");
 				}
 				step ++;
@@ -102,34 +103,26 @@
 				if (step > 4)
 				{
 					clearInterval(refreshId);
-					self.showFleurValues(theDiv);
+					self.addPopups(theDiv);
 				}
-			}, 50);
+			}, 100);
 		},
 
-		showFleurValues: function (theDiv) {
+		addPopups: function (theDiv) {
 			let self = this;
 
-			theDiv.find(".score").addClass("score-off");
-			
 			let popoverOptions = {
-				trigger: 'hover click',
+				trigger: 'hover',
 				html: true
 			  };
 
 			self.axes.forEach((axe) => {
-				let value = theDiv.data(axe.nom);
-				if (value == undefined)
-					value = 0;
+				let value = theDiv.data(axe.nom) ?? 0;
 
-				for (let i = 1; i <= value; i++)
-					theDiv.find(".score-"+axe.nom+"-"+i).removeClass("score-off");
-				
 				popoverOptions.content = axe.textes[value];
 				for (let i = 1; i <= 5; i++)
 					theDiv.find(".score-"+axe.nom+"-"+i).popover(popoverOptions);
 			});
-
 		},
 
 		initializeDivs: function () {

@@ -155,7 +155,7 @@ class FleurAgroecologieHooks implements
 		foreach ($values as $name => $value)
 			$data[] = "data-$name=\"$value\"";
 
-		$ret = '<div class="' . implode(' ', $container_classes) . '" ' . implode(' ', $data) . ' style="width:' . $width . '; height:' . $height . '"></div>';
+		$ret = '<div class="' . implode(' ', $container_classes) . '" ' . implode(' ', $data) . ' style="max-width: 100%; width:' . $width . '; height:' . $height . '"></div>';
 
 		return $ret;
 	}
