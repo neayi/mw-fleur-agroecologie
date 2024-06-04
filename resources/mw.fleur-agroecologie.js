@@ -123,12 +123,11 @@
 					value = 0;
 
 				for (let i = 1; i <= value; i++)
-				{
 					theDiv.find(".score-"+axe.nom+"-"+i).removeClass("score-off");
-				}
 				
 				popoverOptions.content = axe.textes[value];
-				theDiv.find(".score-"+axe.nom).popover(popoverOptions);
+				for (let i = 1; i <= 5; i++)
+					theDiv.find(".score-"+axe.nom+"-"+i).popover(popoverOptions);
 			});
 
 		},
